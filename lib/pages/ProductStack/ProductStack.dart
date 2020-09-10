@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertest/pages/HomeStack/AboutPage.dart';
-import 'package:fluttertest/pages/HomeStack/ContactPage.dart';
-import 'package:fluttertest/pages/HomeStack/HomePage.dart';
 
 import 'DetailPage.dart';
 import 'ProductPage.dart';

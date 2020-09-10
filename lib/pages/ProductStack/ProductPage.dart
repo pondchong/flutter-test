@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertest/widgets/logo.dart';
 import 'package:fluttertest/widgets/menu.dart';
 
 class ProductPage extends StatefulWidget {
