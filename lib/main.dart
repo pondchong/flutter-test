@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertest/pages/AboutPage.dart';
-import 'package:fluttertest/pages/HomePage.dart';
+import 'package:fluttertest/pages/HomeStack/AboutPage.dart';
+import 'package:fluttertest/pages/HomeStack/ContactPage.dart';
+import 'package:fluttertest/pages/HomeStack/HomePage.dart';
+import 'package:fluttertest/pages/HomeStack/HomeStack.dart';
+import 'package:fluttertest/pages/ProductStack/ProductStack.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,8 +39,8 @@ class MyApp extends StatelessWidget {
       // home: HomePage(),
       initialRoute: '/',
       routes: {
-        '/': (context) => HomePage(),
-        '/about': (context) => AboutPage()
+        '/': (context) => HomeStack(),
+        '/productstack': (context) => ProductStack()
       },
       debugShowCheckedModeBanner: false,
     );

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertest/widgets/logo.dart';
+import 'package:fluttertest/widgets/menu.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({Key key}) : super(key: key);
+class ProductPage extends StatefulWidget {
+  ProductPage({Key key}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -14,10 +15,10 @@ class HomePage extends StatefulWidget {
   // always marked "final".
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _ProductPageState createState() => _ProductPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ProductPageState extends State<ProductPage> {
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -27,10 +28,11 @@ class _HomePageState extends State<HomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
+        drawer: Menu(),
         appBar: AppBar(
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
-          title: const Logo(),
+          title: Text('สินค้า'),
           centerTitle: true,
         ),
         body: Center(
@@ -52,11 +54,7 @@ class _HomePageState extends State<HomePage> {
             // axis because Columns are vertical (the cross axis would be
             // horizontal).
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'pond2000',
-              )
-            ],
+            children: <Widget>[Text('สินค้า')],
           ),
         ));
   }
