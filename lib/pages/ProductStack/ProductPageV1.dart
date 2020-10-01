@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:fluttertest/models/Product.dart';
+import 'package:fluttertest/models/Product.dart';
 import 'package:fluttertest/widgets/menu.dart';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
@@ -21,7 +21,7 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
-  List<dynamic> course = [];
+  List<Course> course = [];
   bool isLoading = true;
   getData() async {
     var url = 'https://api.codingthailand.com/api/course';
@@ -30,16 +30,12 @@ class _ProductPageState extends State<ProductPage> {
     if (response.statusCode == 200) {
       var jsonResponse = convert.jsonDecode(response.body);
       setState(() {
-        course = jsonResponse['data'];
-        // course = Product.fromJson(jsonResponse).course;
+        course = Product.fromJson(jsonResponse).course;
         isLoading = false;
       });
       print(response.body);
       print('Number of course : ${course.length}.');
     } else {
-      setState(() {
-        isLoading = false;
-      });
       print('Error ${response.statusCode}');
     }
   }
@@ -80,17 +76,17 @@ class _ProductPageState extends State<ProductPage> {
                         decoration: BoxDecoration(
                             shape: BoxShape.rectangle,
                             image: DecorationImage(
-                                image: NetworkImage(course[index]['picture']),
+                                image: NetworkImage(course[index].picture),
                                 fit: BoxFit.cover)),
                       ),
-                      title: Text(course[index]['title']),
-                      subtitle: Text(course[index]['detail']),
+                      title: Text(course[index].title),
+                      subtitle: Text(course[index].detail),
                       trailing: Icon(Icons.arrow_right),
                       onTap: () {
                         Navigator.pushNamed(context, 'productstack/detail',
                             arguments: {
-                              'id': course[index]['id'],
-                              'title': course[index]['title']
+                              'id': course[index].id,
+                              'title': course[index].title
                             });
                       });
                 },

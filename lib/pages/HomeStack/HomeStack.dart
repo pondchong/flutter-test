@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertest/pages/HomeStack/AboutPage.dart';
+import 'package:fluttertest/pages/HomeStack/CompanyPage.dart';
 import 'package:fluttertest/pages/HomeStack/ContactPage.dart';
 import 'package:fluttertest/pages/HomeStack/HomePage.dart';
+import 'package:fluttertest/pages/HomeStack/NewPage.dart';
+import 'package:fluttertest/pages/HomeStack/RoomPage.dart';
 
 class HomeStack extends StatefulWidget {
   HomeStack({Key key}) : super(key: key);
@@ -21,8 +24,14 @@ class _HomeStackState extends State<HomeStack> {
           case 'homestack/home':
             // Assume CollectPersonalInfoPage collects personal info and then
             // navigates to 'signup/choose_credentials'.
+            builder = (BuildContext _) => NewPage();
+            break;
+          case 'homestack/home_old':
+            // Assume CollectPersonalInfoPage collects personal info and then
+            // navigates to 'signup/choose_credentials'.
             builder = (BuildContext _) => HomePage();
             break;
+
           case 'homestack/about':
             // Assume CollectPersonalInfoPage collects personal info and then
             // navigates to 'signup/choose_credentials'.
@@ -32,6 +41,16 @@ class _HomeStackState extends State<HomeStack> {
             // Assume CollectPersonalInfoPage collects personal info and then
             // navigates to 'signup/choose_credentials'.
             builder = (BuildContext _) => ContactPage();
+            break;
+          case 'homestack/company':
+            // Assume CollectPersonalInfoPage collects personal info and then
+            // navigates to 'signup/choose_credentials'.
+            builder = (BuildContext _) => CompanyPage();
+            break;
+          case 'homestack/room':
+            // Assume CollectPersonalInfoPage collects personal info and then
+            // navigates to 'signup/choose_credentials'.
+            builder = (BuildContext _) => RoomPage();
             break;
           // case 'signup/choose_credentials':
           //   // Assume ChooseCredentialsPage collects new credentials and then

@@ -10,6 +10,7 @@ class ContactPage extends StatefulWidget {
 class _ContactPageState extends State<ContactPage> {
   @override
   Widget build(BuildContext context) {
+    print('contact build');
     return Scaffold(
       appBar: AppBar(
         title: Text('ติดต่อ'),

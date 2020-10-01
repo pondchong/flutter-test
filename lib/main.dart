@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertest/pages/HomeStack/AboutPage.dart';
-import 'package:fluttertest/pages/HomeStack/ContactPage.dart';
-import 'package:fluttertest/pages/HomeStack/HomePage.dart';
 import 'package:fluttertest/pages/HomeStack/HomeStack.dart';
+import 'package:fluttertest/pages/NewsStack/NewsStack.dart';
 import 'package:fluttertest/pages/ProductStack/ProductStack.dart';
+import 'package:fluttertest/pages/TestStack/TestStack.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
         //primarySwatch: Colors.grey,
         primaryColor: Color(0xFF423423),
         accentColor: Colors.deepPurple,
-        canvasColor: Colors.grey,
+
         textTheme:
             TextTheme(headline1: TextStyle(color: Colors.blue, fontSize: 100)),
         // This makes the visual density adapt to the platform that you run
@@ -40,7 +39,9 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => HomeStack(),
-        '/productstack': (context) => ProductStack()
+        '/productstack': (context) => ProductStack(),
+        '/teststack': (context) => TestStack(),
+        '/newsstack': (context) => NewsStack()
       },
       debugShowCheckedModeBanner: false,
     );

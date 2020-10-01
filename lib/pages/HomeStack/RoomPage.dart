@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-// import 'package:fluttertest/models/Product.dart';
+import 'package:fluttertest/models/Room.dart';
+// import 'package:fluttertest/models/Room.dart';
 import 'package:fluttertest/widgets/menu.dart';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
-class ProductPage extends StatefulWidget {
-  ProductPage({Key key}) : super(key: key);
+class RoomPage extends StatefulWidget {
+  RoomPage({Key key}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -17,25 +18,25 @@ class ProductPage extends StatefulWidget {
   // always marked "final".
 
   @override
-  _ProductPageState createState() => _ProductPageState();
+  _RoomPageState createState() => _RoomPageState();
 }
 
-class _ProductPageState extends State<ProductPage> {
-  List<dynamic> course = [];
+class _RoomPageState extends State<RoomPage> {
+  List<Room> room = [];
   bool isLoading = true;
   getData() async {
-    var url = 'https://api.codingthailand.com/api/course';
+    var url = 'https://codingthailand.com/api/get_rooms.php';
     // Await the http get response, then decode the json-formatted response.
     var response = await http.get(url);
     if (response.statusCode == 200) {
       var jsonResponse = convert.jsonDecode(response.body);
       setState(() {
-        course = jsonResponse['data'];
-        // course = Product.fromJson(jsonResponse).course;
+        // room = jsonResponse;
+        room = Hotel.fromJson(jsonResponse).room;
         isLoading = false;
       });
       print(response.body);
-      print('Number of course : ${course.length}.');
+      print('Number of course : ${room.length}.');
     } else {
       setState(() {
         isLoading = false;
@@ -64,7 +65,7 @@ class _ProductPageState extends State<ProductPage> {
         appBar: AppBar(
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
-          title: Text('สินค้า'),
+          title: Text('ห้องพัก'),
           centerTitle: true,
         ),
         body: isLoading == true
@@ -74,28 +75,19 @@ class _ProductPageState extends State<ProductPage> {
             : ListView.separated(
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
-                      leading: Container(
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            image: DecorationImage(
-                                image: NetworkImage(course[index]['picture']),
-                                fit: BoxFit.cover)),
-                      ),
-                      title: Text(course[index]['title']),
-                      subtitle: Text(course[index]['detail']),
+                      title: Text(room[index].name),
+                      subtitle: Text(room[index].status),
                       trailing: Icon(Icons.arrow_right),
                       onTap: () {
                         Navigator.pushNamed(context, 'productstack/detail',
                             arguments: {
-                              'id': course[index]['id'],
-                              'title': course[index]['title']
+                              'id': room[index].id,
+                              'name': room[index].name
                             });
                       });
                 },
                 separatorBuilder: (BuildContext context, int index) =>
                     Divider(),
-                itemCount: course.length));
+                itemCount: room.length));
   }
 }
